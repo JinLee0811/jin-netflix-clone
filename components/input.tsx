@@ -17,7 +17,7 @@ type
   return (
     <div className="relative">
       <input
-        id="{id}"
+        id= {id}
         value={value}
         type={type}
         onChange={onChange}
@@ -56,7 +56,7 @@ type
           peer-focus:scale-75
           peer-focus:-translate-y-3
         "
-        htmlFor="{id}"
+        htmlFor={id}
       >
         {label}
       </label>
