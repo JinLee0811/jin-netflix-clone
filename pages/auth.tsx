@@ -2,12 +2,10 @@ import { useState, useCallback } from 'react';
 import Input from "../components/Input";
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/router';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 
 const Auth = () => {
-  const router = useRouter();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -20,21 +18,15 @@ const Auth = () => {
 
   const login = useCallback(async () => {
     try {
-      const result = await signIn('credentials', {
+        await signIn('credentials', {
         email,
         password,
-        redirect: false, // redirect를 false로 설정하여 수동 리다이렉션
+        callbackUrl: '/profiles',
       });
-
-      if (result?.ok) {
-        router.push('/');
-      } else {
-        console.log(result?.error);
-      }
     } catch (err) {
       console.log(err);
     }
-  }, [email, password, router]);
+  }, [email, password]);
 
   const register = useCallback(async () => {
     try {
@@ -90,7 +82,7 @@ const Auth = () => {
             </button>
             <div className='flex flex-row item-center gap-4 mt-8 justify-center'>
               <div 
-              onClick={() => signIn('google', { callbackUrl: '/' })}
+              onClick={() => signIn('google', { callbackUrl: '/profiles' })}
               className='
               w-8
               h-8
@@ -106,7 +98,7 @@ const Auth = () => {
               <FcGoogle size={32} />
               </div>
               <div
-              onClick={() => signIn('github', { callbackUrl: '/' })} 
+              onClick={() => signIn('github', { callbackUrl: '/profiles' })} 
               className='
               w-8
               h-8
