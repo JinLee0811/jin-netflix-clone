@@ -17,12 +17,14 @@ The Netflix clone project is designed to replicate the essential features of Net
 ## Technologies Used
 
 - **Frontend:**
+
   - HTML
   - CSS
   - JavaScript
   - React.js
 
 - **Backend:**
+
   - Node.js
   - Express.js
   - MongoDB
@@ -45,8 +47,9 @@ Follow these steps to set up and run the project locally:
 
 
    Here is the correct Markdown format for the "Setup and Installation" section:
+   ```
 
-```markdown
+````markdown
 ## Setup and Installation
 
 Follow these steps to set up and run the project locally:
@@ -57,6 +60,7 @@ Follow these steps to set up and run the project locally:
    git clone https://github.com/yourusername/netflix-clone.git
    cd netflix-clone
    ```
+````
 
 2. **Install dependencies for the frontend:**
 
@@ -105,4 +109,9 @@ Follow these steps to set up and run the project locally:
    ```
    http://localhost:3000
    ```
+
+8. \*_build for vercel_
+
+```
+
 ```
