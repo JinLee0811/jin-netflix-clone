@@ -1,4 +1,3 @@
-// [...nextauth].ts
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GithubProvider from 'next-auth/providers/github';
@@ -51,11 +50,6 @@ export const authOptions: NextAuthOptions = {
   ],
   pages: {
     signIn: '/auth',
-    // Optional: Add redirect URLs for other pages
-    // signOut: '/',
-    // error: '/auth/error',
-    // verifyRequest: '/auth/verify-request',
-    // newUser: null // Set to null to disable this page
   },
   callbacks: {
     async redirect({ url, baseUrl }) {

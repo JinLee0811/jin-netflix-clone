@@ -22,7 +22,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 const Profiles = () => {
   const router = useRouter();
-  const { data: user } = useCurrentUser();
+  const { data: user, error } = useCurrentUser();
+
+  if (error) {
+    return <div>Error loading user data</div>;
+  }
+
   return (
     <div className='flex items-center h-full justify-center'>
       <div className='flex flex-col'>
@@ -54,8 +59,8 @@ const Profiles = () => {
                     text-gray-400
                     text-2xl
                     text-center
-                    group:hover:text-white'>
-                {user?.name}
+                    group-hover:text-white'>
+                {user?.name || 'User'}
               </div>
             </div>
           </div>
