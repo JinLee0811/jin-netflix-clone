@@ -72,23 +72,8 @@ model Movie {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String
-  videoUrl String
+  videoUrl    String
   thumbnailUrl String
   genre       String
-  duration String
-  overview    String
-  poster_path String
-  backdrop_path String
-  release_date DateTime
-  vote_average Float
-  vote_count  Int
-  popularity  Float
-  original_language String
-  original_title String
-  genre_ids   Int[]
-  adult       Boolean
-  video       Boolean
-  media_type  String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  duration    String
 }

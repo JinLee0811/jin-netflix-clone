@@ -3,6 +3,12 @@ import { getServerSession } from 'next-auth/next';
 import useCurrentUser from '../hooks/useCurrentUser';
 import { authOptions } from './api/auth/[...nextauth]';
 import Navbar from '@/components/Navbar';
+import Billboard from '@/components/Billboard';
+import MovieList from '@/components/MovieList';
+import useMovieList from '@/hooks/useMovieList';
+import useFavorites from '@/hooks/useFavorites';
+import InfoModal from '@/components/InfoModal';
+import useInfoModal from '@/hooks/useInfoModal';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getServerSession(context.req, context.res, authOptions);
@@ -22,11 +28,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 }
 
 export default function Home() {
-  const { data: user } = useCurrentUser();
+  const { data: movies = [] } = useMovieList();
+  const { data: favorites = [] } = useFavorites();
+  const { isOpen, closeModal } = useInfoModal();
 
   return (
     <>
-    <Navbar />
+      <InfoModal visible={isOpen} onClose={closeModal} />
+      <Navbar />
+      <Billboard />
+      <div className='pb-40'>
+        <MovieList title='Trending now' data={movies} />
+        <MovieList title='My List' data={favorites} />
+      </div>
     </>
   );
 }

@@ -37,7 +37,10 @@ export const authOptions: NextAuthOptions = {
           throw new Error('Email does not exist');
         }
 
-        const isPasswordValid = await bcrypt.compare(credentials.password, user.hashedPassword);
+        const isPasswordValid = await bcrypt.compare(
+          credentials.password,
+          user.hashedPassword
+        );
         if (!isPasswordValid) {
           throw new Error('Incorrect password');
         }
@@ -60,7 +63,7 @@ export const authOptions: NextAuthOptions = {
       if (url.startsWith(baseUrl)) return url;
       if (url.startsWith('/')) return new URL(url, baseUrl).toString();
       return baseUrl;
-    }
+    },
   },
   debug: process.env.NODE_ENV === 'development',
   adapter: PrismaAdapter(prismadb),
