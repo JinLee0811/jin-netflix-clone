@@ -59,7 +59,6 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async redirect({ url, baseUrl }) {
-      // Ensure we only redirect to the callbackUrl within the same site
       if (url.startsWith(baseUrl)) return url;
       if (url.startsWith('/')) return new URL(url, baseUrl).toString();
       return baseUrl;
